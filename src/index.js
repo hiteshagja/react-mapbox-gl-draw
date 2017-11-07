@@ -5,7 +5,7 @@ import MapboxDraw from '@mapbox/mapbox-gl-draw';
 export default class DrawControl extends React.Component {
   componentWillMount() {
     this.draw = new MapboxDraw(this.props);
-    this.context.map.addControl(this.draw);
+    this.context.map.addControl(this.draw, this.props.position);
   }
 
   componentWillUnmount() {
@@ -25,6 +25,7 @@ DrawControl.contextTypes = {
 };
 
 DrawControl.propTypes = {
+  position: PropTypes.array,
   keybindings: PropTypes.bool,
   touchEnabled: PropTypes.bool,
   boxSelect: PropTypes.bool,
